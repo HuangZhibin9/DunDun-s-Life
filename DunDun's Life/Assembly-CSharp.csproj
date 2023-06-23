@@ -43,6 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AudioManger.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <None Include="Assets\Shader\NPRTest.shader" />
      <None Include="Assets\Shader\Test.shader" />
      <None Include="Assets\VoxelAnimals\Documentation\ReadMe.txt" />
      <Reference Include="UnityEngine">
