@@ -71,6 +71,7 @@ Shader "Custom/NPRTest"
             #pragma multi_compile_fwdbase
             #include "AutoLight.cginc"
             #include "Lighting.cginc"
+            
             struct v2f
             {
                 float4 pos:POSITION;
@@ -85,13 +86,14 @@ Shader "Custom/NPRTest"
                 float4 vertex:POSITION;
                 float3 normal:NORMAL;
                 float4 texcoord:TEXCOORD0;
+                float4 tangent:TANGENT;
             };
             v2f vert(a2v v)
             {
                 v2f o;
                 o.pos=UnityObjectToClipPos(v.vertex);
                 o.uv=TRANSFORM_TEX(v.texcoord,_MainTex);
-                o.worldNormal=mul(v.normal,(float3x3)unity_WorldToObject);
+                o.worldNormal=mul(v.tangent,(float3x3)unity_WorldToObject);
                 o.worldPos=mul(unity_ObjectToWorld,v.vertex).xyz;
                 TRANSFER_SHADOW(o);
                 return o;
