@@ -358,6 +358,12 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/AudioManger.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/SaveSystem/Data.cs"
+"Assets/Scripts/SaveSystem/RecordData.cs"
+"Assets/Scripts/SaveSystem/RecordPanel.cs"
+"Assets/Scripts/SaveSystem/RecordUI.cs"
+"Assets/Scripts/SaveSystem/SAVE.cs"
+"Assets/Scripts/SaveSystem/TimeMgr.cs"
 -langversion:9.0
 
 /deterministic

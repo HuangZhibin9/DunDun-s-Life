@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ControllPlayer();
-        DogSound();
+        //DogSound();
     }
 
     void DogSound()

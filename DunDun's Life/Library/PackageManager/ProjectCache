@@ -1043,10 +1043,12 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
     - 1.8.3
+    - 1.8.4
     compatible:
     - 1.6.4
     - 1.6.5
@@ -1057,10 +1059,12 @@ m_ResolvedPackages:
     - 1.7.2
     - 1.7.3
     - 1.7.4
+    - 1.7.5
     - 1.8.0
     - 1.8.1
     - 1.8.2
     - 1.8.3
+    - 1.8.4
     verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
@@ -3025,10 +3029,12 @@ m_ResolvedPackages:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
     compatible:
     - 1.0.6
     - 2.0.2
     - 2.0.3
+    - 2.0.4
     verified: 1.0.6
   dependencies: []
   resolvedDependencies: []
