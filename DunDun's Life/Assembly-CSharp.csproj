@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\SaveSystem\TimeMgr.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\SAVE.cs" />
+    <Compile Include="Assets\Scripts\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\VoxelAnimals\Documentation\ReadMe.txt" />
