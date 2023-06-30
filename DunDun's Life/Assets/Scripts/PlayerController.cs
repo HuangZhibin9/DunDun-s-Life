@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         virtualRunCamera.enabled = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         ControllPlayer();
         //DogSound();
@@ -58,7 +58,30 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("Walk", 0);
         }
 
-        transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+        //
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, movement, out hit) && hit.collider.tag == "Barrier")
+        {
+            //Debug.Log($"hit.tag = {hit.collider.tag}");
+
+            //Debug.DrawLine(transform.position, hit.point, new Color(0, 1, 1), 200f);
+            float hitLen = (transform.position - hit.point).magnitude;
+            //Debug.Log($"hit distance = {hitLen}");
+            if (hitLen < 5f)
+            {
+                //don't move
+            }
+            else
+            {
+                transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+            }
+        }
+        else
+        {
+            transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
+        }
+
+        //rb.velocity = movement * movementSpeed;
 
         if (Input.GetButtonDown("Jump") && Time.time > canJump)
         {
@@ -67,16 +90,14 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown("left shift"))
+        if (Input.GetKey("left shift"))
         {
             movementSpeed = runSpeed;
-            anim.speed = 2f;
             virtualRunCamera.enabled = true;
         }
-        if (Input.GetKeyUp("left shift"))
+        else
         {
             movementSpeed = walkSpeed;
-            anim.speed = 1f;
             virtualRunCamera.enabled = false;
         }
     }
