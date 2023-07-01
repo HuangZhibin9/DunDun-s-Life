@@ -6,17 +6,39 @@ using Cinemachine;
 public class PlayerController : MonoBehaviour
 {
 
-    float movementSpeed = 3;
-    public float walkSpeed = 8;
-    public float runSpeed = 14;
+    float movementSpeed;        //当前速度
+    public float walkSpeed;     //行走速度预设
+    public float runSpeed = 14; //奔跑速度预设
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
     Animator anim;
     Rigidbody rb;
     [SerializeField]
-    private CinemachineVirtualCamera virtualRunCamera = null;
 
+    public List<GameObject> Items;      //附近可交互的物品
+    public GameObject TheClosestItem;   //最近的物品
+    public float Distance; //与最近物品的距离
+    public CinemachineVirtualCamera virtualRunCamera = null;    //奔跑时的虚拟摄像机
+
+    //当有物品进入Trigger时，将其添加至 Items 列表
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Items")
+        {
+            Items.Add(other.gameObject);
+        }
+    }
+
+    //当有物品离开Trigger时，将其移除 Items 列表
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Items")
+        {
+            Items.Remove(other.gameObject);
+        }
+
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -26,10 +48,30 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        //狗的行动控制
         ControllPlayer();
+        //得到最近的物品
+        Distance = GetMinDistanceItem();
+
+        //如果最近的物品不为空，则执行该物品的 Grasp()
+        if (TheClosestItem != null)
+        {
+            //Grasp中检测是否按E，从而抓取物品和放下物品
+            //如果距离小于 X ，则执行Grasp()
+            if (Distance < 10f)
+            {
+                bool flag = TheClosestItem.GetComponent<ItemIteract>().Grasp();
+                if (flag)
+                {
+                    Items.Remove(Items[Items.Count - 1]);
+                }
+            }
+
+        }
         //DogSound();
     }
 
+    //左键狗叫 右键卖萌
     void DogSound()
     {
         if (Input.GetMouseButtonDown(0))
@@ -41,6 +83,24 @@ public class PlayerController : MonoBehaviour
             AudioManger.PlayAudio("DogSoundTwo");
         }
     }
+
+    //得到最近的物品
+    float GetMinDistanceItem()
+    {
+        float minDistance = 100000f;
+        for (int i = 0; i < Items.Count; ++i)
+        {
+            float distance = Vector3.Distance(Items[i].transform.position, transform.GetChild(0).position);
+            if (distance < minDistance)
+            {
+                TheClosestItem = Items[i];
+                minDistance = distance;
+            }
+        }
+        return minDistance;
+    }
+
+    //狗的移动控制
     void ControllPlayer()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -58,7 +118,7 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("Walk", 0);
         }
 
-        //
+        //射线检测，如果为 Barrier 则不能继续前进
         RaycastHit hit;
         if (Physics.Raycast(transform.position, movement, out hit) && hit.collider.tag == "Barrier")
         {
@@ -100,5 +160,6 @@ public class PlayerController : MonoBehaviour
             movementSpeed = walkSpeed;
             virtualRunCamera.enabled = false;
         }
+
     }
 }

@@ -94,7 +94,7 @@ public class Tutorials : MonoBehaviour
         {
             FaceDilate -= 0.02f;
             GetComponent<MeshRenderer>().material.SetFloat("_FaceDilate", FaceDilate);
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.02f);
         }
         yield break;
     }
@@ -105,7 +105,7 @@ public class Tutorials : MonoBehaviour
         {
             FaceDilate += 0.02f;
             GetComponent<MeshRenderer>().material.SetFloat("_FaceDilate", FaceDilate);
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.02f);
         }
         yield break;
     }
