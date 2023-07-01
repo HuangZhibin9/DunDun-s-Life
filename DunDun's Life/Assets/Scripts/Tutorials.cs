@@ -39,18 +39,48 @@ public class Tutorials : MonoBehaviour
         }
         else if (GuidenceIndex == 2)
         {
-            if (FaceDilate > -1 && GuidenceIndex == 2
-                && Input.GetKeyDown(KeyCode.E))
+            if (FaceDilate < -0.9f && GuidenceIndex == 2)
+            {
+                GetComponent<TextMeshPro>().text = "LeftShift Run";
+                StartCoroutine("TextPresent");
+            }
+            if (FaceDilate > -0.1f && GuidenceIndex == 2 && GetComponent<TextMeshPro>().text == "LeftShift Run")
             {
                 StartCoroutine("TextFade");
                 GuidenceIndex = 3;
+            }
+        }
+        else if (GuidenceIndex == 3)
+        {
+            if (FaceDilate > -1 && GuidenceIndex == 3
+                && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 4;
+            }
+        }
+        else if (GuidenceIndex == 4)
+        {
+            if (FaceDilate > -1 && GuidenceIndex == 4
+                && Input.GetKeyDown(KeyCode.E))
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 5;
+            }
+        }
+        else if (GuidenceIndex == 5)
+        {
+            if (FaceDilate > -1f && GuidenceIndex == 5)
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 5;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Ball" && GuidenceIndex == 2)
+        if (other.name == "Ball" && GuidenceIndex == 4)
         {
             GetComponent<TextMeshPro>().text = "E to catch/throw";
             StartCoroutine("TextPresent");
@@ -64,7 +94,7 @@ public class Tutorials : MonoBehaviour
         {
             FaceDilate -= 0.02f;
             GetComponent<MeshRenderer>().material.SetFloat("_FaceDilate", FaceDilate);
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.04f);
         }
         yield break;
     }
@@ -75,7 +105,7 @@ public class Tutorials : MonoBehaviour
         {
             FaceDilate += 0.02f;
             GetComponent<MeshRenderer>().material.SetFloat("_FaceDilate", FaceDilate);
-            yield return new WaitForSeconds(0.02f);
+            yield return new WaitForSeconds(0.04f);
         }
         yield break;
     }
