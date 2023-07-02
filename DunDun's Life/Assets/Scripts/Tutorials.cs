@@ -80,7 +80,7 @@ public class Tutorials : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Ball" && GuidenceIndex == 4)
+        if (other.tag == "Items" && GuidenceIndex == 4)
         {
             GetComponent<TextMeshPro>().text = "E to catch/throw";
             StartCoroutine("TextPresent");

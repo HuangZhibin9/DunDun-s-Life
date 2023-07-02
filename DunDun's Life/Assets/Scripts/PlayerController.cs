@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Items")
         {
             Items.Remove(other.gameObject);
+            other.GetComponent<Outline>().enabled = false;
         }
 
     }
@@ -51,6 +52,10 @@ public class PlayerController : MonoBehaviour
         //狗的行动控制
         ControllPlayer();
         //得到最近的物品
+        //DogSound();
+    }
+    private void Update()
+    {
         Distance = GetMinDistanceItem();
 
         //如果最近的物品不为空，则执行该物品的 Grasp()
@@ -61,14 +66,21 @@ public class PlayerController : MonoBehaviour
             if (Distance < 10f)
             {
                 bool flag = TheClosestItem.GetComponent<ItemIteract>().Grasp();
+
                 if (flag)
                 {
-                    Items.Remove(Items[Items.Count - 1]);
+                    for (int i = 0; i < Items.Count; i++)
+                    {
+                        if (Items[i].name == TheClosestItem.name)
+                        {
+                            Items.Remove(Items[i]);
+                            break;
+                        }
+                    }
                 }
             }
 
         }
-        //DogSound();
     }
 
     //左键狗叫 右键卖萌
@@ -95,6 +107,11 @@ public class PlayerController : MonoBehaviour
             {
                 TheClosestItem = Items[i];
                 minDistance = distance;
+                TheClosestItem.GetComponent<Outline>().enabled = true;
+            }
+            else
+            {
+                Items[i].GetComponent<Outline>().enabled = false;
             }
         }
         return minDistance;
