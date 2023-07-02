@@ -31,6 +31,7 @@ Shader "Custom/NPRTest"
                 float2 uv:TEXCOORD0;
                 float3 worldNormal:TEXCOORD1;
                 float3 worldPos:TEXCOORD2;
+                float4 vertColor:COLOR;
             };
 
             struct a2v
@@ -38,19 +39,25 @@ Shader "Custom/NPRTest"
                 float4 vertex:POSITION;
                 float3 normal:NORMAL;
                 float4 texcoord:TEXCOORD0;
+                float4 tangent:TANGENT;
+                float4 vertColor:COLOR;
             };
             v2f vert(a2v v)
             {
                 v2f o;
-                float4 pos=mul(UNITY_MATRIX_MV,v.vertex);
-                float3 normal=mul((float3x3)UNITY_MATRIX_IT_MV,v.normal);
-                normal.z=-0.5;
-                pos=pos+float4(normalize(normal),0)*_Outline;
-                o.pos=mul(UNITY_MATRIX_P,pos);
+                UNITY_INITIALIZE_OUTPUT(v2f,o);
+                float4 pos=UnityObjectToClipPos(v.vertex);
+                float3 normal=mul((float3x3)UNITY_MATRIX_IT_MV,v.tangent.xyz);
+                float3 ndcnormal=normalize(TransformViewToProjection(normal.xyz))*pos.w;
+                float4 nearUpperRight = mul(unity_CameraInvProjection, float4(1, 1, UNITY_NEAR_CLIP_VALUE, _ProjectionParams.y));//将近裁剪面右上角位置的顶点变换到观察空间
+                float aspect = abs(nearUpperRight.y / nearUpperRight.x);//求得屏幕宽高比
+                ndcnormal.x *= aspect;
+                pos.xy+=0.01*_Outline*ndcnormal.xy*v.vertColor.a;
+                o.pos=pos;
                 return o;
             }
             float4 frag(v2f i):SV_Target{
-                return float4(_OutlineColor.rgb,1.0);
+                return float4((_OutlineColor*i.vertColor).rgb,0);
             }
             ENDCG
         }
@@ -86,14 +93,13 @@ Shader "Custom/NPRTest"
                 float4 vertex:POSITION;
                 float3 normal:NORMAL;
                 float4 texcoord:TEXCOORD0;
-                float4 tangent:TANGENT;
             };
             v2f vert(a2v v)
             {
                 v2f o;
                 o.pos=UnityObjectToClipPos(v.vertex);
                 o.uv=TRANSFORM_TEX(v.texcoord,_MainTex);
-                o.worldNormal=mul(v.tangent,(float3x3)unity_WorldToObject);
+                o.worldNormal=mul(v.normal,(float3x3)unity_WorldToObject);
                 o.worldPos=mul(unity_ObjectToWorld,v.vertex).xyz;
                 TRANSFER_SHADOW(o);
                 return o;
