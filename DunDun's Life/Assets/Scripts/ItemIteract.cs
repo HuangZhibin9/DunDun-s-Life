@@ -4,54 +4,50 @@ using UnityEngine;
 
 public class ItemIteract : MonoBehaviour
 {
-    public Transform colliderItem;
+    //狗的Transform组件
+    public Transform Dog;
+    //位置偏移
     public Vector3 OffsetPosition;
+    //旋转偏移
     public Vector3 OffsetRotation;
-    public bool IsClosed = false;
+    //是否抓取
     public bool IsGrasping = false;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            IsClosed = true;
-        }
-        //else IsClosed = false;
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        IsClosed = false;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (IsClosed)
+        if (IsGrasping)
+        {
+            transform.eulerAngles = Dog.eulerAngles + OffsetRotation;
+            transform.position = Dog.position + OffsetPosition;
+        }
+    }
+
+    public bool Grasp()
+    {
+        //因为在放下物品时，会开启Collider组件，会导致PlayerController脚本中的物品List增加一个元素，需要把这个删掉
+        bool flag = false;
+        if (IsGrasping == false)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 IsGrasping = true;
                 this.GetComponent<Collider>().enabled = false;
-                //transform.SetParent(colliderItem.transform);
-                transform.eulerAngles = colliderItem.eulerAngles + OffsetRotation;
-                transform.position = colliderItem.position + OffsetPosition;
-                IsClosed = false;
+                transform.eulerAngles = Dog.eulerAngles + OffsetRotation;
+                transform.position = Dog.position + OffsetPosition;
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-
                 IsGrasping = false;
                 this.GetComponent<Collider>().enabled = true;
+                flag = true;
             }
         }
-
-        if (IsGrasping)
-        {
-            transform.eulerAngles = colliderItem.eulerAngles + OffsetRotation;
-            transform.position = colliderItem.position + OffsetPosition;
-        }
+        return flag;
     }
 }
