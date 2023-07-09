@@ -12,7 +12,7 @@ public class ItemIteract : MonoBehaviour
     public Vector3 OffsetRotation;
     //是否抓取
     public bool IsGrasping = false;
-
+    public bool ForGrasp = true;
 
 
     // Update is called once per frame
@@ -25,29 +25,33 @@ public class ItemIteract : MonoBehaviour
         }
     }
 
-    public bool Grasp()
+    public virtual bool Grasp()
     {
-        //因为在放下物品时，会开启Collider组件，会导致PlayerController脚本中的物品List增加一个元素，需要把这个删掉
         bool flag = false;
-        if (IsGrasping == false)
+        if (ForGrasp)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            //因为在放下物品时，会开启Collider组件，会导致PlayerController脚本中的物品List增加一个元素，需要把这个删掉
+            if (IsGrasping == false)
             {
-                IsGrasping = true;
-                this.GetComponent<Collider>().enabled = false;
-                transform.eulerAngles = Dog.eulerAngles + OffsetRotation;
-                transform.position = Dog.position + OffsetPosition;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    IsGrasping = true;
+                    this.GetComponent<Collider>().enabled = false;
+                    transform.eulerAngles = Dog.eulerAngles + OffsetRotation;
+                    transform.position = Dog.position + OffsetPosition;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    IsGrasping = false;
+                    this.GetComponent<Collider>().enabled = true;
+                    flag = true;
+                }
             }
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                IsGrasping = false;
-                this.GetComponent<Collider>().enabled = true;
-                flag = true;
-            }
-        }
+
         return flag;
     }
 }
