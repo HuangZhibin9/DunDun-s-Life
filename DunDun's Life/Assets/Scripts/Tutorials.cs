@@ -70,17 +70,36 @@ public class Tutorials : MonoBehaviour
         }
         else if (GuidenceIndex == 5)
         {
-            if (FaceDilate > -1f && GuidenceIndex == 5)
+            if (FaceDilate < -0.9f && GuidenceIndex == 5
+                && Input.GetKeyDown(KeyCode.E))
+            {
+                GetComponent<TextMeshPro>().text = "Tab to show list";
+                StartCoroutine("TextPresent");
+                GuidenceIndex = 6;
+            }
+        }
+        else if (GuidenceIndex == 6)
+        {
+            if (FaceDilate > -1 && GuidenceIndex == 6
+                && Input.GetKeyDown(KeyCode.Tab))
             {
                 StartCoroutine("TextFade");
-                GuidenceIndex = 5;
+                GuidenceIndex = 7;
+            }
+        }
+        else if (GuidenceIndex == 7)
+        {
+            if (FaceDilate > -1f && GuidenceIndex == 7)
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 7;
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Items" && GuidenceIndex == 4)
+        if (other.tag == "Items" && GuidenceIndex == 4 && FaceDilate < -0.9f)
         {
             GetComponent<TextMeshPro>().text = "E to catch/throw";
             StartCoroutine("TextPresent");
