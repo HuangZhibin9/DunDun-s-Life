@@ -11,10 +11,12 @@ public class RecordPanel : MonoBehaviour
     public GameObject recordPanel;      //存档面板【控制显示/隐藏】
 
     [Header("按钮")]
-    public Button open;
+    // public Button open;
     public Button exit;
     public Button save;
     public Button load;
+    public Button _return;
+
     [ColorUsage(true)]
     public Color oriColor;              //按钮初始颜色
 
@@ -53,9 +55,10 @@ public class RecordPanel : MonoBehaviour
         RecordUI.OnRightClick += RightClickGrid;
         RecordUI.OnEnter += ShowDetails;
         RecordUI.OnExit += HideDetails;
-        open.onClick.AddListener(() => CloseOrOpen());
+        // open.onClick.AddListener(() => CloseOrOpen());
         save.onClick.AddListener(() => SaveOrLoad());
         load.onClick.AddListener(() => SaveOrLoad(false));
+        _return.onClick.AddListener(() => _Return());
         exit.onClick.AddListener(QuitGame);
         #endregion
 
@@ -98,29 +101,44 @@ public class RecordPanel : MonoBehaviour
 
 
     //按钮OPEN调用
-    void CloseOrOpen()
-    {
-        //修改显示/隐藏
-        recordPanel.SetActive(!recordPanel.activeSelf);
-        //修改文字
-        open.transform.GetChild(0).GetComponent<Text>().text = (recordPanel.activeSelf) ? "CLOSE" : "OPEN";
-        //修改可否互动
-        save.interactable = (recordPanel.activeSelf) ? true : false;
-        load.interactable = (recordPanel.activeSelf) ? true : false;
-    }
+    // void CloseOrOpen()
+    // {
+    //     //修改显示/隐藏
+    //     recordPanel.SetActive(!recordPanel.activeSelf);
+    //     //修改文字
+    //     open.transform.GetChild(0).GetComponent<Text>().text = (recordPanel.activeSelf) ? "CLOSE" : "OPEN";
+    //     //修改可否互动
+    //     save.interactable = (recordPanel.activeSelf) ? true : false;
+    //     load.interactable = (recordPanel.activeSelf) ? true : false;
+    // }
 
 
     //按钮save或load调用
     void SaveOrLoad(bool OnSave = true)
     {
+        recordPanel.SetActive(true);
         //修改模式
         isSave = OnSave;
         isLoad = !OnSave;
         //修改颜色
-        save.GetComponent<Image>().color = (isSave) ? Color.white : oriColor;
-        load.GetComponent<Image>().color = (isLoad) ? Color.white : oriColor;
+        save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
+        load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
     }
-
+    void _Return()
+    {
+        if (recordPanel.activeSelf)
+        {
+            recordPanel.SetActive(false);
+            isSave = false;
+            isLoad = false;
+            save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
+            load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
+        }
+        else
+        {
+            ToDoManager.Instance.closeTabPanel();
+        }
+    }
 
     //左击
     void LeftClickGrid(int ID)
