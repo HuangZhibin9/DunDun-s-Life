@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DIYTools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Realistic-Real-Time-Grass-Rendering-With-Unity/Assets/Scene/NewBehaviourScript.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2RYF2lZuFlyHkoFneSkcZYuFboa" />
   <component name="ProjectViewState">
@@ -64,10 +64,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1156">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19928">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1156" />
+      <option name="pid" value="19928" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -94,6 +94,8 @@
       <workItem from="1688310164774" duration="3238000" />
       <workItem from="1688317923970" duration="3347000" />
       <workItem from="1688480824160" duration="1020000" />
+      <workItem from="1689004702123" duration="445000" />
+      <workItem from="1689005188479" duration="2781000" />
     </task>
     <servers />
   </component>
