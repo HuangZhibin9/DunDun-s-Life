@@ -10,6 +10,7 @@ Shader "chenjd/Grass" {
 		//LOD的两个分割点
         _LODDistance1("LODDistance_near(第一个分割点)",float) = 30
         _LODDistance2("LODDistance_far(第二个分割点)",float) = 50
+        [HDR]_ExtraColor("Color",Color) = (1, 1, 1, 1)
     }
     SubShader
     {
@@ -58,6 +59,7 @@ Shader "chenjd/Grass" {
             float _WindForce;
             float _LODDistance1;
             float _LODDistance2;
+            fixed4 _ExtraColor;
 
             v2g vert (appdata_full v)
             {
@@ -303,7 +305,7 @@ Shader "chenjd/Grass" {
 
                 light = ambient + diffuseLight + specularLight;
 
-                return fixed4(col * light, alpha.r);
+                return fixed4(col * light * _ExtraColor, alpha.r);
             }
             ENDCG
         }

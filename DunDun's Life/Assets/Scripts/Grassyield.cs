@@ -21,11 +21,11 @@ public class Grassyield : MonoBehaviour
         }
 
         
-        Vector3 startposition = new Vector3((float)-0.5, (float)0,(float)-0.5);
+        Vector3 startposition = new Vector3((float)0, (float)-1,(float)0);
         Vector3 pacthsize = new Vector3((plane.GetComponent<MeshFilter>().mesh.bounds.size.x*plane.transform.localScale.x) / grassPatchRowCount, 0, (plane.GetComponent<MeshFilter>().mesh.bounds.size.z*plane.transform.localScale.z)/grassPatchRowCount);
-        for (double x = 0; x < grassPatchRowCount; x+=0.01)
+        for (double x = 0; x < grassPatchRowCount; x++)
         {
-            for (double y = 0; y < grassPatchRowCount; y+=0.01)
+            for (double y = 0; y < grassPatchRowCount; y++)
             {
                 this.generateGrass(startposition, pacthsize, grassPatchRowCount);
                 startposition.x += pacthsize.x;
@@ -90,6 +90,6 @@ public class Grassyield : MonoBehaviour
 
     private void Start()
     {
-        grassYield(30,240);
+        grassYield(180,50);
     }
 }
