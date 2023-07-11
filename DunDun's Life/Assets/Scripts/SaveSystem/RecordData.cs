@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecordData : MonoBehaviour
 {
@@ -19,6 +21,13 @@ public class RecordData : MonoBehaviour
         }
     }
     #endregion
+
+    private void Start()
+    {
+        Load();
+    }
+
+
 
     public const int recordNum = 3;             //存档数量
     public const string NAME = "RecordData";    //存档列表名
@@ -60,4 +69,5 @@ public class RecordData : MonoBehaviour
     {
         ForLoad(SAVE.JsonLoad<SaveData>(NAME));
     }
+
 }
