@@ -70,7 +70,7 @@ public class RecordUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
     public void SetName(int i)
     {
-        Debug.Log("pass1");
+        Debug.Log("pass{i}");
         //空档，隐藏Auto标识（因为有可能是删档时调用的）
         if (RecordData.Instance.recordName[i] == "")
         {

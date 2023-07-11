@@ -124,6 +124,14 @@ public class RecordPanel : MonoBehaviour
         save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
         load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
     }
+
+    public void reset()
+    {
+        isSave = false;
+        isLoad = false;
+        save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
+        load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
+    }
     void _Return()
     {
         if (recordPanel.activeSelf)
