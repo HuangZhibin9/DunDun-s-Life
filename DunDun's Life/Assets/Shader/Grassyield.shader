@@ -4,7 +4,7 @@ Shader "chenjd/Grass" {
         _MainTex ("Texture", 2D) = "white" {}
         _AlphaTex("Alpha (A)", 2D) = "white" {}
         _Height("Grass Height", float) = 3
-        _Width("Grass Width", range(0, 0.1)) = 0.05
+        _Width("Grass Width", range(0, 5.0)) = 0.05
         _WindSpeed("WindSpeed", float) = 5
         _WindForce("WindForce",float) = 1
 		//LOD的两个分割点

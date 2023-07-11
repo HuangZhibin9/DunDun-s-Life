@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random=System.Random;
 
 public class Grassyield : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Grassyield : MonoBehaviour
     public GameObject plane;
 
     public Material grassmat;
+
+    public Random random;
 //生成草地
     private void grassYield(int grassPatchRowCount, int grassCountPerPatch)
     {
@@ -69,8 +72,8 @@ public class Grassyield : MonoBehaviour
     {
         for (int i = 0; i < grasscountprePatch; i++)
         {
-            var Xdistance =patchsize.x;
-            var Zdistance =patchsize.z;
+            var Xdistance =random.NextDouble()*patchsize.x;
+            var Zdistance =random.NextDouble()*patchsize.z;
             var indexX = (double)((startPosition.x + Xdistance));
             var indexZ = (double)((startPosition.z + Zdistance));
             if (indexX > plane.GetComponent<MeshFilter>().mesh.bounds.size.x)
@@ -90,6 +93,7 @@ public class Grassyield : MonoBehaviour
 
     private void Start()
     {
-        grassYield(180,50);
+        this.random = new Random();
+        grassYield(60,50);
     }
 }
