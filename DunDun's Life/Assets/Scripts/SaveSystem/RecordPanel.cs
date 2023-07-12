@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class RecordPanel : MonoBehaviour
 {
+    public GameObject loadTag;
+    public GameObject saveTag;
     public Transform grid;               //档位父对象
     public GameObject recordPrefab;      //档位预制体
     public GameObject recordPanel;      //存档面板【控制显示/隐藏】
@@ -121,16 +123,20 @@ public class RecordPanel : MonoBehaviour
         isSave = OnSave;
         isLoad = !OnSave;
         //修改颜色
-        save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
-        load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
+        save.gameObject.SetActive(!isSave);
+        saveTag.gameObject.SetActive(isSave);
+        load.gameObject.SetActive(!isLoad);
+        loadTag.gameObject.SetActive(isLoad);
     }
 
     public void reset()
     {
         isSave = false;
         isLoad = false;
-        save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
-        load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
+        save.gameObject.SetActive(!isSave);
+        saveTag.gameObject.SetActive(isSave);
+        load.gameObject.SetActive(!isLoad);
+        loadTag.gameObject.SetActive(isLoad);
     }
     void _Return()
     {
@@ -139,8 +145,10 @@ public class RecordPanel : MonoBehaviour
             recordPanel.SetActive(false);
             isSave = false;
             isLoad = false;
-            save.GetComponent<Image>().color = (isSave) ? Color.blue : oriColor;
-            load.GetComponent<Image>().color = (isLoad) ? Color.blue : oriColor;
+            save.gameObject.SetActive(!isSave);
+            saveTag.gameObject.SetActive(isSave);
+            load.gameObject.SetActive(!isLoad);
+            loadTag.gameObject.SetActive(isLoad);
         }
         else
         {
