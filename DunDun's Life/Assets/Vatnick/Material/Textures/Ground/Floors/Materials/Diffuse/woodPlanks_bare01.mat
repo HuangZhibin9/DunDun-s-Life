@@ -31,7 +31,7 @@ Material:
     - _ShadowSmooth: 0.2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 0.7169812, g: 0.5085995, b: 0.26650053, a: 1}
+    - _MainColor: {r: 1, g: 0.68869567, b: 0.32452828, a: 1}
     - _ShadowColor: {r: 0.31132078, g: 0.20934469, b: 0.08047347, a: 1}
     - _outlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
