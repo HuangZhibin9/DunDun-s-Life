@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             //Grasp中检测是否按E，从而抓取物品和放下物品
             //如果距离小于 X ，则执行Grasp()
-            if (Distance < 10f)
+            if (Distance < 35f)
             {
                 bool flag = TheClosestItem.GetComponent<ItemIteract>().Grasp();
 
@@ -128,11 +128,11 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-            anim.SetInteger("Walk", 1);
+            //anim.SetInteger("Walk", 1);
         }
         else
         {
-            anim.SetInteger("Walk", 0);
+            //anim.SetInteger("Walk", 0);
         }
 
         //射线检测，如果为 Barrier 则不能继续前进
