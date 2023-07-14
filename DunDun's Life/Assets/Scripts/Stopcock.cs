@@ -11,7 +11,8 @@ public class Stopcock : ItemIteract
         if (Input.GetKeyDown(KeyCode.E))
         {
             isSpring = true;
-            Master.GetComponent<MasterAi>().StartGo();
+            Master.GetComponent<MasterFSM>().parameter.target = this.transform;
+            Master.GetComponent<MasterFSM>().TransitionState(StateType.CloseWater);
         }
 
         return false;

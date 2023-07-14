@@ -14,6 +14,8 @@ public class ItemIteract : MonoBehaviour
     public bool IsGrasping = false;
     public bool ForGrasp = true;
 
+    bool flag = false;
+
 
     // Update is called once per frame
     void Update()
@@ -27,7 +29,7 @@ public class ItemIteract : MonoBehaviour
 
     public virtual bool Grasp()
     {
-        bool flag = false;
+        flag = false;
         if (ForGrasp)
         {
             //因为在放下物品时，会开启Collider组件，会导致PlayerController脚本中的物品List增加一个元素，需要把这个删掉
@@ -39,19 +41,28 @@ public class ItemIteract : MonoBehaviour
                     this.GetComponent<Collider>().enabled = false;
                     transform.eulerAngles = Dog.eulerAngles + OffsetRotation;
                     transform.position = Dog.position + OffsetPosition;
+                    if (this.name == "Phone")
+                    {
+                        this.GetComponent<Phone>().CallMaster();
+                    }
                 }
             }
             else
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    IsGrasping = false;
-                    this.GetComponent<Collider>().enabled = true;
-                    flag = true;
+                    PutDown();
                 }
             }
         }
 
         return flag;
+    }
+
+    public void PutDown()
+    {
+        IsGrasping = false;
+        this.GetComponent<Collider>().enabled = true;
+        flag = true;
     }
 }
