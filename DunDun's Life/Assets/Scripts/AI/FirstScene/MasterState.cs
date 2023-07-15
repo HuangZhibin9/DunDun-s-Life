@@ -99,6 +99,8 @@ public class CatchPhoneState : IState
     {
         parameter.animator.SetBool("Shock", true);
         timer = 0;
+        manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("Angry");
+        manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;
     }
     public void OnUpdate()
     {
@@ -110,6 +112,7 @@ public class CatchPhoneState : IState
             parameter.animator.SetBool("Shock", false);
             parameter.agent.destination = parameter.target.position;
             parameter.animator.SetBool("Walking", true);
+            manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("生气");
         }
 
         if (Vector3.Distance(manager.gameObject.transform.position, parameter.target.position) < 32f && Index == 0)
@@ -132,6 +135,7 @@ public class CatchPhoneState : IState
             parameter.animator.SetBool("Walking", true);
             parameter.agent.destination = parameter.oriPosition;
             Index = 4;
+            manager.emojiManager.GetComponent<MasterEmoji>().reset();
         }
 
         if (Index == 4 || Index == 5)
