@@ -59,10 +59,12 @@ public class Data : MonoBehaviour
             dog.position = _SaveData_for_sceneloaded.Position;
             dog.rotation = _SaveData_for_sceneloaded.Rotation;
             gameTime = _SaveData_for_sceneloaded.gameTime;
+            ToDoManager.Instance.closeTabPanel();
         }
         else
         {
             SceneManager.LoadScene(saveData.SceneName);
+            ToDoManager.Instance.closeTabPanel();
         }
     }
 
