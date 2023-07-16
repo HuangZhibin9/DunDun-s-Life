@@ -69,20 +69,23 @@ public class PlayerController : MonoBehaviour
 
                 if (flag)
                 {
-                    for (int i = 0; i < Items.Count; i++)
-                    {
-                        if (Items[i].name == TheClosestItem.name)
-                        {
-                            Items.Remove(Items[i]);
-                            break;
-                        }
-                    }
+                    RemoveItem(TheClosestItem.name);
                 }
             }
 
         }
     }
-
+    public void RemoveItem(string name)
+    {
+        for (int i = 0; i < Items.Count;)
+        {
+            if (Items[i].name == name)
+            {
+                Items.Remove(Items[i]);
+            }
+            else i++;
+        }
+    }
     //左键狗叫 右键卖萌
     void DogSound()
     {

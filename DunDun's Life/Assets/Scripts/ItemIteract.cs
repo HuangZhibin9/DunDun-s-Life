@@ -6,6 +6,7 @@ public class ItemIteract : MonoBehaviour
 {
     //狗的Transform组件
     public Transform Dog;
+    public PlayerController DogController;
     //位置偏移
     public Vector3 OffsetPosition;
     //旋转偏移
@@ -52,6 +53,7 @@ public class ItemIteract : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     PutDown();
+                    flag = true;
                 }
             }
         }
@@ -63,6 +65,5 @@ public class ItemIteract : MonoBehaviour
     {
         IsGrasping = false;
         this.GetComponent<Collider>().enabled = true;
-        flag = true;
     }
 }
