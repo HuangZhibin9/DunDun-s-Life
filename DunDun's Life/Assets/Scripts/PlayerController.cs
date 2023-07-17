@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
+    private float timer = 0f;
     Animator anim;
     Rigidbody rb;
     [SerializeField]
@@ -52,10 +53,12 @@ public class PlayerController : MonoBehaviour
         //狗的行动控制
         ControllPlayer();
         //得到最近的物品
-        //DogSound();
+
     }
     private void Update()
     {
+        timer += Time.deltaTime;
+        DogSound();
         Distance = GetMinDistanceItem();
 
         //如果最近的物品不为空，则执行该物品的 Grasp()
@@ -89,13 +92,22 @@ public class PlayerController : MonoBehaviour
     //左键狗叫 右键卖萌
     void DogSound()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManger.PlayAudio("DogSoundOne");
+            //AudioManger.PlayAudio("DogSoundOne");
         }
         if (Input.GetMouseButtonDown(1))
         {
-            AudioManger.PlayAudio("DogSoundTwo");
+            timer = 0;
+            //AudioManger.PlayAudio("DogSoundTwo");
+            anim.SetBool("Cute", true);
+
+            Debug.Log("Cute");
+        }
+        if (timer > 1.5f && anim.GetBool("Cute"))
+        {
+            anim.SetBool("Cute", false);
         }
     }
 

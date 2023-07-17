@@ -39,20 +39,20 @@ public class Tutorials : MonoBehaviour
         }
         else if (GuidenceIndex == 2)
         {
-            if (FaceDilate < -0.9f && GuidenceIndex == 2)
+            if (FaceDilate < -0.8f && GuidenceIndex == 2)
             {
                 GetComponent<TextMeshPro>().text = "LeftShift Run";
                 StartCoroutine("TextPresent");
             }
             if (FaceDilate > -0.1f && GuidenceIndex == 2 && GetComponent<TextMeshPro>().text == "LeftShift Run")
             {
-                StartCoroutine("TextFade");
                 GuidenceIndex = 3;
             }
+
         }
         else if (GuidenceIndex == 3)
         {
-            if (FaceDilate > -1 && GuidenceIndex == 3
+            if (FaceDilate > -0.1f && GuidenceIndex == 3
                 && Input.GetKeyDown(KeyCode.LeftShift))
             {
                 StartCoroutine("TextFade");
@@ -89,12 +89,33 @@ public class Tutorials : MonoBehaviour
         }
         else if (GuidenceIndex == 7)
         {
-            if (FaceDilate > -1f && GuidenceIndex == 7)
+            if (FaceDilate < -0.9f && GuidenceIndex == 7)
             {
-                StartCoroutine("TextFade");
-                GuidenceIndex = 7;
+                GetComponent<TextMeshPro>().text = "left/right click bar/cute";
+                StartCoroutine("TextPresent");
+            }
+            if (FaceDilate > -0.1f && GuidenceIndex == 7 && GetComponent<TextMeshPro>().text == "left/right click bar/cute")
+            {
+                GuidenceIndex = 8;
             }
         }
+        else if (GuidenceIndex == 8)
+        {
+            if (FaceDilate > -1f && GuidenceIndex == 8 && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)))
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 9;
+            }
+        }
+        else if (GuidenceIndex == 9)
+        {
+            if (FaceDilate > -1f && GuidenceIndex == 9)
+            {
+                StartCoroutine("TextFade");
+                GuidenceIndex = 9;
+            }
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
