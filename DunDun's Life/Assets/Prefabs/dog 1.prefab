@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 511137206584911693}
   - component: {fileID: 511137206584911683}
   - component: {fileID: 511137206584911682}
+  - component: {fileID: 2190465967872120967}
   m_Layer: 0
   m_Name: dog 1
   m_TagString: Player
@@ -286,7 +287,7 @@ Transform:
   m_GameObject: {fileID: 511137206584911688}
   m_LocalRotation: {x: 0, y: -0.7155831, z: 0, w: 0.6985277}
   m_LocalPosition: {x: 357.8, y: 10.7, z: 358.7}
-  m_LocalScale: {x: 39.15, y: 39.15, z: 39.15}
+  m_LocalScale: {x: 39.150005, y: 39.15, z: 39.150005}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 853015712244844089}
@@ -310,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40079260bda69f14c80332a04d1632a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 25
-  runSpeed: 40
+  walkSpeed: 40
+  runSpeed: 65
   jumpForce: 300
   timeBeforeNextJump: 1.2
   Items: []
@@ -328,7 +329,7 @@ Animator:
   m_GameObject: {fileID: 511137206584911688}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67d4f9240c7cc4940bbae8ca5cb94c83, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -399,6 +400,14 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!81 &2190465967872120967
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511137206584911688}
+  m_Enabled: 1
 --- !u!1 &853015712244844090
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853015712301837783}
   m_LocalRotation: {x: 7.6263455e-18, y: 0.00000423193, z: -3.1103182e-17, w: -1}
-  m_LocalPosition: {x: -0.014, y: 0.139, z: 0.389}
+  m_LocalPosition: {x: -0.014, y: 0.349, z: 0.389}
   m_LocalScale: {x: 7.3159494, y: 9.029257, z: 9.029257}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2905,7 +2914,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5277368566001063513, guid: 610d311316e71774ba62c3e4c2136545, type: 3}
+  - {fileID: 2100000, guid: 403cfb80d6b3ae547b80e096ec43aec7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3720,7 +3729,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8817706466741364336}
-  m_LocalRotation: {x: 0.58877313, y: -0.55827916, z: -0.4353516, w: 0.39005065}
+  m_LocalRotation: {x: 0.5887732, y: -0.5582792, z: -0.4353516, w: 0.39005065}
   m_LocalPosition: {x: 0.023405002, y: 0.062149122, z: -0.0648223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

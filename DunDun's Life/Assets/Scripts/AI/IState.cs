@@ -6,5 +6,5 @@ public interface IState
     void OnUpdate();
     void OnExit();
 
-    public Parameter GetParameters();
+
 }

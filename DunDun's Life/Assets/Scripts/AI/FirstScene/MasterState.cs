@@ -6,7 +6,7 @@ public class IdleState : IState
 {
     private MasterFSM manager;
     private Parameter parameter;
-    private float timer;
+    //private float timer;
 
     public IdleState(MasterFSM manger)
     {
@@ -32,7 +32,7 @@ public class IdleState : IState
     }
     public void OnExit()
     {
-        timer = 0;
+        //timer = 0;
         Debug.Log($"Exit IdleState : IdleState isWetted = {manager.isWetted}");
     }
 

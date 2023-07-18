@@ -14,8 +14,8 @@ public class Phone : MonoBehaviour
     public Vector3 handPositon;
     ItemIteract item;
 
-    bool isMoved = false;
-    bool IsGrasping = false;
+    //bool isMoved = false;
+    //bool IsGrasping = false;
 
     public bool MasterCatch = false;
 
@@ -27,8 +27,8 @@ public class Phone : MonoBehaviour
 
     public void CallMaster()
     {
-        isMoved = true;
-        IsGrasping = true;
+        //isMoved = true;
+        //IsGrasping = true;
         Master.GetComponent<MasterFSM>().TransitionState(StateType.CatchPhone);
         Master.GetComponent<MasterFSM>().parameter.target = this.transform;
         Master.GetComponent<MasterFSM>().parameter.oriPosition = this.transform.position;

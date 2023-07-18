@@ -15,8 +15,8 @@ public class Kettle : MonoBehaviour
     public Vector3 handPositon;
     ItemIteract item;
 
-    bool isMoved = false;
-    bool IsGrasping = false;
+    //bool isMoved = false;
+    //bool IsGrasping = false;
 
     public bool MasterCatch = false;
 
