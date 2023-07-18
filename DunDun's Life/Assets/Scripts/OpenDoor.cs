@@ -9,6 +9,8 @@ public class OpenDoor : ItemIteract
     public GameObject text;
     public GameObject GoOutTimeline;
     bool canOpen = false;
+    public GameObject NewMaster;
+    public GameObject OldMaster;
     public override bool Grasp()
     {
 
@@ -20,6 +22,8 @@ public class OpenDoor : ItemIteract
     {
         if (Input.GetKeyDown(KeyCode.E) && Index == 0 && canOpen)
         {
+            OldMaster.SetActive(false);
+            NewMaster.SetActive(true);
             GoOutTimeline.SetActive(true);
             this.transform.position = new Vector3(0, 0, 0);
             text.SetActive(false);
