@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
     private float timer = 0f;
+
     Animator anim;
     Rigidbody rb;
     [SerializeField]
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         virtualRunCamera.enabled = false;
+
     }
 
     void FixedUpdate()

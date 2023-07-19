@@ -253,8 +253,7 @@ public class WettedState : IState
             if (GameObject.Find("Kettle").GetComponent<ItemIteract>().IsGrasping == true)
             {
                 GameObject.Find("Kettle").GetComponent<ItemIteract>().PutDown();
-                parameter.animator.SetBool("Shock", true);
-                parameter.animator.SetBool("Walking", false);
+
                 timer = 0f;
             }
             GameObject.Find("dog").GetComponent<PlayerController>().RemoveItem("Kettle");
@@ -296,7 +295,7 @@ public class WettedState : IState
         if (Vector3.Distance(manager.gameObject.transform.position, GameObject.Find("KettlePosition").transform.position) < 32f && Index == 4)
         {
             parameter.animator.SetBool("Walking", false);
-            // parameter.animator.SetBool("CloseWater", true);
+            parameter.animator.SetBool("PutDown", true);
             timer = 0;
             Index = 5;
         }
@@ -309,6 +308,7 @@ public class WettedState : IState
         }
         if (timer > 2f && Index == 6)
         {
+            parameter.animator.SetBool("PutDown", false);
             parameter.animator.SetBool("Walking", true);
             parameter.oriPosition = GameObject.Find("Kettle").transform.position + new Vector3(0, 0, 100);
             parameter.agent.destination = GameObject.Find("Kettle").transform.position + new Vector3(0, 0, 100);

@@ -46,6 +46,10 @@ public class ItemIteract : MonoBehaviour
                     {
                         this.GetComponent<Phone>().CallMaster();
                     }
+                    if (this.name == "Item1")
+                    {
+                        this.GetComponent<Qiqiu>().CallMagician();
+                    }
                 }
             }
             else
