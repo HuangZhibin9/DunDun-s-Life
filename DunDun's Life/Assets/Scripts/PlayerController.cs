@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 300;
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
+    private float timer = 0f;
     Animator anim;
     Rigidbody rb;
     [SerializeField]
@@ -52,10 +53,12 @@ public class PlayerController : MonoBehaviour
         //狗的行动控制
         ControllPlayer();
         //得到最近的物品
-        //DogSound();
+
     }
     private void Update()
     {
+        timer += Time.deltaTime;
+        DogSound();
         Distance = GetMinDistanceItem();
 
         //如果最近的物品不为空，则执行该物品的 Grasp()
@@ -63,36 +66,48 @@ public class PlayerController : MonoBehaviour
         {
             //Grasp中检测是否按E，从而抓取物品和放下物品
             //如果距离小于 X ，则执行Grasp()
-            if (Distance < 10f)
+            if (Distance < 35f)
             {
                 bool flag = TheClosestItem.GetComponent<ItemIteract>().Grasp();
 
                 if (flag)
                 {
-                    for (int i = 0; i < Items.Count; i++)
-                    {
-                        if (Items[i].name == TheClosestItem.name)
-                        {
-                            Items.Remove(Items[i]);
-                            break;
-                        }
-                    }
+                    RemoveItem(TheClosestItem.name);
                 }
             }
 
         }
     }
-
+    public void RemoveItem(string name)
+    {
+        for (int i = 0; i < Items.Count;)
+        {
+            if (Items[i].name == name)
+            {
+                Items.Remove(Items[i]);
+            }
+            else i++;
+        }
+    }
     //左键狗叫 右键卖萌
     void DogSound()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManger.PlayAudio("DogSoundOne");
+            //AudioManger.PlayAudio("DogSoundOne");
         }
         if (Input.GetMouseButtonDown(1))
         {
-            AudioManger.PlayAudio("DogSoundTwo");
+            timer = 0;
+            //AudioManger.PlayAudio("DogSoundTwo");
+            anim.SetBool("Cute", true);
+
+            Debug.Log("Cute");
+        }
+        if (timer > 1.5f && anim.GetBool("Cute"))
+        {
+            anim.SetBool("Cute", false);
         }
     }
 
@@ -128,11 +143,12 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-            anim.SetInteger("Walk", 1);
+            anim.SetBool("Walk", true);
         }
         else
         {
-            anim.SetInteger("Walk", 0);
+            anim.SetBool("Walk", false);
+            //anim.SetInteger("Walk", 0);
         }
 
         //射线检测，如果为 Barrier 则不能继续前进
