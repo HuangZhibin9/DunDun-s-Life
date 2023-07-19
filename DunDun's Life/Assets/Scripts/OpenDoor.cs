@@ -49,7 +49,7 @@ public class OpenDoor : ItemIteract
 
     IEnumerator NextScene()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(2);
         yield break;
     }

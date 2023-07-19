@@ -41,7 +41,7 @@ public class ChildIdleState : IState
     }
     public void OnUpdate()
     {
-        Debug.Log(Vector3.Distance(manager.transform.position, dog.transform.position));
+        //Debug.Log(Vector3.Distance(manager.transform.position, dog.transform.position));
         if (Vector3.Distance(manager.transform.position, dog.transform.position) < 50f && Input.GetMouseButtonDown(0))
         {
             manager.TransitionState(ChildStateType.ChildShock);
@@ -96,6 +96,7 @@ public class ChildShockState : IState
             GameObject.Find("IceCream").GetComponent<Rigidbody>().useGravity = true;
             GameObject.Find("IceCream").GetComponent<BoxCollider>().enabled = true;
             GameObject.Find("IceCream").GetComponent<ItemIteract>().enabled = true;
+            parameter.animator.SetBool("Ice", false);
         }
     }
     public void OnExit()
