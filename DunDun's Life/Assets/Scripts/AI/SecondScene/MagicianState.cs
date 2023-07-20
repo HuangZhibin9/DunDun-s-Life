@@ -48,9 +48,26 @@ public class MagicianIdleState : IState
         parameter.animator.SetBool("Catch", false);
         parameter.animator.SetBool("Shock", false);
         parameter.animator.SetBool("Drive", false);
+
+        if (manager.num > 1)
+        {
+            manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("生气");
+            manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;
+            GameObject.Find("ListManager").GetComponent<ListTwoManager>().Finish(4);
+        }
+        else
+        {
+            if (manager.enjoyCount > 1 && manager.num == 0)
+            {
+                manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("爱心");
+                manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;
+                GameObject.Find("ListManager").GetComponent<ListTwoManager>().Finish(4);
+            }
+        }
     }
     public void OnUpdate()
     {
+
         //Debug.Log(Vector3.Distance(manager.transform.position, dog.transform.position));
         if (manager.num > 1)
         {
@@ -65,15 +82,72 @@ public class MagicianIdleState : IState
             {
                 manager.TransitionState(MagicianStateType.MagicianShock);
             }
+            if (manager.num <= 1 && Vector3.Distance(manager.transform.position, dog.transform.position) < 80f && Input.GetMouseButtonDown(1))
+            {
+                manager.TransitionState(MagicianStateType.MagicianEnjoy);
+            }
             if (qiqiu.GetComponent<ItemIteract>().IsGrasping == true)
             {
                 manager.TransitionState(MagicianStateType.MagicianCatchQiqiu);
+            }
+        }
+        if (manager.duck3.GetComponent<ItemIteract>().IsGrasping == true && Vector3.Distance(manager.transform.position, dog.transform.position) < 80f)
+        {
+            if (manager.enjoyCount > 1 && manager.num <= 1)
+            {
+
+            }
+            else
+            {
+                manager.duck3.GetComponent<ItemIteract>().PutDown();
+                GameObject.Find("dog").GetComponent<PlayerController>().RemoveItem("duck3");
+                manager.TransitionState(MagicianStateType.MagicianDrive);
             }
         }
     }
     public void OnExit()
     {
 
+    }
+    public MagicianParameter GetParameters()
+    {
+        return default(MagicianParameter);
+    }
+}
+
+public class MagicianEnjoyState : IState
+{
+    private MagicianFSM manager;
+    private MagicianParameter parameter;
+    private float timer;
+    private GameObject dog;
+    public MagicianEnjoyState(MagicianFSM manger)
+    {
+        this.manager = manger;
+        this.parameter = manager.parameter;
+    }
+    public void OnEnter()
+    {
+        parameter.animator.SetBool("Cheer", false);
+        parameter.animator.SetBool("Enjoy", true);
+        manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("心");
+        manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;
+        manager.enjoyCount++;
+        timer = 0;
+    }
+    public void OnUpdate()
+    {
+        timer += Time.deltaTime;
+        manager.transform.LookAt(GameObject.Find("dog").transform);
+        if (timer > 2f)
+        {
+            manager.TransitionState(MagicianStateType.MagicianIdle);
+        }
+    }
+    public void OnExit()
+    {
+        parameter.animator.SetBool("Enjoy", false);
+        manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = false;
     }
     public MagicianParameter GetParameters()
     {
@@ -96,6 +170,7 @@ public class MagicianDriveState : IState
     {
         dog = GameObject.Find("dog");
         manager.transform.LookAt(dog.transform);
+        parameter.animator.SetBool("Cheer", false);
         parameter.animator.SetBool("Drive", true);
         manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("生气");
         manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;

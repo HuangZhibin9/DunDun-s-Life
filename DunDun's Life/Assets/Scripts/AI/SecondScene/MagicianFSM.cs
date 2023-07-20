@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public enum MagicianStateType
 {
-    MagicianIdle, MagicianShock, MagicianCatchQiqiu, MagicianDrive,
+    MagicianIdle, MagicianShock, MagicianCatchQiqiu, MagicianDrive, MagicianEnjoy,
 }
 
 
@@ -27,7 +27,9 @@ public class MagicianFSM : MonoBehaviour
     private Dictionary<MagicianStateType, IState> states = new Dictionary<MagicianStateType, IState>();
     public MagicianParameter parameter;
     public GameObject emojiManager;
+    public GameObject duck3;
     public int num = 0;
+    public int enjoyCount = 0;
     public bool cheer = true;
 
 
@@ -37,6 +39,7 @@ public class MagicianFSM : MonoBehaviour
         states.Add(MagicianStateType.MagicianShock, new MagicianShockState(this));
         states.Add(MagicianStateType.MagicianCatchQiqiu, new MagicianCatchQiqiuState(this));
         states.Add(MagicianStateType.MagicianDrive, new MagicianDriveState(this));
+        states.Add(MagicianStateType.MagicianEnjoy, new MagicianEnjoyState(this));
         TransitionState(MagicianStateType.MagicianIdle);
     }
 

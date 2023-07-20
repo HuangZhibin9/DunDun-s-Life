@@ -9,6 +9,7 @@ public class ToDoManager : MonoBehaviour
     public GameObject TabPanel;
     public GameObject SavePanel;
     public GameObject Buttons;
+    public GameObject List;
 
     #region 单例
     public static ToDoManager Instance;
@@ -28,6 +29,11 @@ public class ToDoManager : MonoBehaviour
 
     private void Update()
     {
+        TabCanvas = GameObject.Find("TabCanvas");
+        TabPanel = TabCanvas.transform.GetChild(0).gameObject;
+        SavePanel = TabCanvas.transform.GetChild(1).gameObject;
+        Buttons = TabCanvas.transform.GetChild(2).gameObject;
+        List = TabPanel.transform.GetChild(2).gameObject;
         if (!IsOpenUI && Input.GetKeyDown(KeyCode.Tab))
         {
             Debug.Log($"打开任务清单");
@@ -35,6 +41,7 @@ public class ToDoManager : MonoBehaviour
             TabPanel.SetActive(true);
             SavePanel.SetActive(false);
             Buttons.SetActive(true);
+            List.SetActive(true);
             TabCanvas.GetComponent<RecordPanel>().reset();
             IsOpenUI = true;
         }

@@ -14,6 +14,7 @@ public class MotorbikePlug : ItemIteract
             MotorBike.GetComponent<Motorbike>().power = false;
             Dianxian.SetActive(false);
             Dianxian2.SetActive(true);
+            GameObject.Find("ListManager").GetComponent<ListTwoManager>().Finish(3);
         }
         return false;
     }

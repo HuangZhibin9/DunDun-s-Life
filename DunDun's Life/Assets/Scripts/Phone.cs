@@ -29,9 +29,13 @@ public class Phone : MonoBehaviour
     {
         //isMoved = true;
         //IsGrasping = true;
-        Master.GetComponent<MasterFSM>().TransitionState(StateType.CatchPhone);
-        Master.GetComponent<MasterFSM>().parameter.target = this.transform;
-        Master.GetComponent<MasterFSM>().parameter.oriPosition = this.transform.position;
+        if (Master.GetComponent<MasterFSM>().currentState == Master.GetComponent<MasterFSM>().states[StateType.Idle])
+        {
+            Master.GetComponent<MasterFSM>().TransitionState(StateType.CatchPhone);
+            Master.GetComponent<MasterFSM>().parameter.target = this.transform;
+            Master.GetComponent<MasterFSM>().parameter.oriPosition = this.transform.position;
+        }
+
     }
     private void Update()
     {
@@ -43,6 +47,10 @@ public class Phone : MonoBehaviour
             this.gameObject.transform.rotation = Master.transform.rotation * Quaternion.Euler(offsetRotation);
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.GetComponent<BoxCollider>().enabled = false;
+        }
+        if (this.GetComponent<ItemIteract>().IsGrasping)
+        {
+            GameObject.Find("ListManager").GetComponent<ListOneManager>().Finish(2);
         }
     }
 

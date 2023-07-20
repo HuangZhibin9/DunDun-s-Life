@@ -24,8 +24,8 @@ public class Parameter
 
 public class MasterFSM : MonoBehaviour
 {
-    private IState currentState;
-    private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
+    public IState currentState;
+    public Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
     public Parameter parameter;
     public GameObject emojiManager;
     public GameObject Kettle;

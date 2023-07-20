@@ -29,6 +29,7 @@ public class Duck : MonoBehaviour
         if (duck1 && duck2 && duck3)
         {
             scarf.color = Color.yellow;
+            GameObject.Find("ListManager").GetComponent<ListTwoManager>().Finish(1);
         }
     }
 

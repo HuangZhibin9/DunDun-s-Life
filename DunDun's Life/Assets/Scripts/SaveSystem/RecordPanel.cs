@@ -10,7 +10,8 @@ public class RecordPanel : MonoBehaviour
     public GameObject saveTag;
     public Transform grid;               //档位父对象
     public GameObject recordPrefab;      //档位预制体
-    public GameObject recordPanel;      //存档面板【控制显示/隐藏】
+    public GameObject recordPanel;
+    public GameObject List;      //存档面板【控制显示/隐藏】
 
     [Header("按钮")]
     // public Button open;
@@ -127,6 +128,7 @@ public class RecordPanel : MonoBehaviour
         saveTag.gameObject.SetActive(isSave);
         load.gameObject.SetActive(!isLoad);
         loadTag.gameObject.SetActive(isLoad);
+        List.SetActive(false);
     }
 
     public void reset()
@@ -149,6 +151,7 @@ public class RecordPanel : MonoBehaviour
             saveTag.gameObject.SetActive(isSave);
             load.gameObject.SetActive(!isLoad);
             loadTag.gameObject.SetActive(isLoad);
+            List.SetActive(true);
         }
         else
         {

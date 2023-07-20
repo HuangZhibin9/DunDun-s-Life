@@ -179,6 +179,7 @@ public class CatchPhoneState : IState
         {
             //parameter.target.GetComponent<Phone>().MasterCatch = false;
             parameter.target.GetComponent<Phone>().PhoneReset();
+            GameObject.Find("ListManager").GetComponent<ListOneManager>().Undo(2);
             timer = 0;
             Index = 6;
         }
@@ -231,6 +232,7 @@ public class WettedState : IState
         manager.emojiManager.GetComponent<MasterEmoji>().PlayEmoji("Angry");
         manager.emojiManager.GetComponent<MasterEmoji>().image.enabled = true;
         Index = 0;
+        GameObject.Find("ListManager").GetComponent<ListOneManager>().Finish(1);
     }
     public void OnUpdate()
     {
@@ -303,6 +305,7 @@ public class WettedState : IState
         {
             //parameter.target.GetComponent<Phone>().MasterCatch = false;
             GameObject.Find("Kettle").GetComponent<Kettle>().PhoneReset();
+
             timer = 0;
             Index = 6;
         }

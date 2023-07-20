@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public enum ChildStateType
 {
-    ChildIdle, ChildShock
+    ChildIdle, ChildShock, ChildEnjoy,
 }
 
 
@@ -24,12 +24,14 @@ public class ChildFSM : MonoBehaviour
     private Dictionary<ChildStateType, IState> states = new Dictionary<ChildStateType, IState>();
     public ChildParameter parameter;
     public GameObject emojiManager;
+    public bool IceFinish = false;
 
 
     void Start()
     {
         states.Add(ChildStateType.ChildIdle, new ChildIdleState(this));
         states.Add(ChildStateType.ChildShock, new ChildShockState(this));
+        states.Add(ChildStateType.ChildEnjoy, new ChildEnjoyState(this));
         TransitionState(ChildStateType.ChildIdle);
     }
 

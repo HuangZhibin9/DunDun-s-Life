@@ -27,6 +27,7 @@ public class OpenDoor : ItemIteract
             GoOutTimeline.SetActive(true);
             this.transform.position = new Vector3(0, 0, 0);
             text.SetActive(false);
+            GameObject.Find("ListManager").GetComponent<ListOneManager>().Finish(3);
             StartCoroutine("NextScene");
         }
     }
