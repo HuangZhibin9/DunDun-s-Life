@@ -32,12 +32,12 @@ RectTransform:
   m_Children:
   - {fileID: 8520591683811265088}
   m_Father: {fileID: 7903241075794253080}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 550, y: 100}
+  m_AnchoredPosition: {x: 131, y: 0}
+  m_SizeDelta: {x: 550, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3481060611329530033
 CanvasRenderer:
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f773407ed521c154f87dd23f5e6d68c4, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5bb48ea37cdc6b0408708fd82c52b28d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -107,8 +107,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6826597247289414315}
   - {fileID: 8307367331898453478}
+  - {fileID: 6826597247289414315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,11 +174,11 @@ RectTransform:
   m_Children:
   - {fileID: 5019830183922057306}
   m_Father: {fileID: 7903241075794253080}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -268.64, y: 0}
+  m_AnchoredPosition: {x: 13, y: 124}
   m_SizeDelta: {x: 112.7148, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6544505875606032706
@@ -335,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2747, y: 0}
+  m_AnchoredPosition: {x: -14, y: 3}
   m_SizeDelta: {x: 508.9282, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &153455289771734141
@@ -368,12 +368,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 54
+    m_FontSize: 67
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 8
     m_MaxSize: 87
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
