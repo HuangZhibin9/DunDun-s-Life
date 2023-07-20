@@ -189,10 +189,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey("left shift"))
         {
             movementSpeed = runSpeed;
+            anim.speed = 3;
             virtualRunCamera.enabled = true;
         }
         else
         {
+            anim.speed = 2;
             movementSpeed = walkSpeed;
             virtualRunCamera.enabled = false;
         }

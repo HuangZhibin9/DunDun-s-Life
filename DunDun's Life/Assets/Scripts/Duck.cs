@@ -7,6 +7,7 @@ public class Duck : MonoBehaviour
     public Material scarf;
     bool duck1 = false;
     bool duck2 = false;
+    bool duck3 = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "duck1")
@@ -17,11 +18,15 @@ public class Duck : MonoBehaviour
         {
             duck2 = true;
         }
+        if (other.name == "duck3")
+        {
+            duck3 = true;
+        }
 
     }
     private void Update()
     {
-        if (duck1 && duck2)
+        if (duck1 && duck2 && duck3)
         {
             scarf.color = Color.yellow;
         }
