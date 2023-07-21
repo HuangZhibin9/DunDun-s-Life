@@ -6,11 +6,13 @@ public class Stopcock : ItemIteract
 {
     public bool isSpring = false;
     public GameObject Master;
+    public GameObject Water;
     public override bool Grasp()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             isSpring = true;
+            AudioManger.PlayAudio("喷水声");
             Master.GetComponent<MasterFSM>().parameter.target = this.transform;
             Master.GetComponent<MasterFSM>().TransitionState(StateType.CloseWater);
         }
@@ -21,7 +23,12 @@ public class Stopcock : ItemIteract
     {
         if (isSpring)
         {
-            Debug.Log($"Spring");
+            Water.SetActive(true);
+            //Debug.Log($"Spring");
+        }
+        else
+        {
+            Water.SetActive(false);
         }
     }
 }

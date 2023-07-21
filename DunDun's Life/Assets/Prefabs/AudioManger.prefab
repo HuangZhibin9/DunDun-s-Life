@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &519273085680288422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519273085680288416}
+  - component: {fileID: 519273085680288417}
+  - component: {fileID: 5930062671605320882}
+  m_Layer: 0
+  m_Name: AudioManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &519273085680288416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519273085680288422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519273085680288417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519273085680288422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1faab804c0319784e956d1d98c85b7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: 254ab130d5962044bb02887c89f25476, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+  - clip: {fileID: 8300000, guid: 1e9fc582ace0e854e89a56abaaaa2292, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+  - clip: {fileID: 8300000, guid: 94cea487d96c0d2438f2e3829eb15f3a, type: 3}
+    outputGroup: {fileID: -8024017409669379772, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: c57b95c40bce6e14ebaf9fb6270e6c32, type: 3}
+    outputGroup: {fileID: -8024017409669379772, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: 9ea995782762d47498bb3da005b10b30, type: 3}
+    outputGroup: {fileID: -8024017409669379772, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: 5835bb541322ca1478dbbf58c9dead36, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: d0c6320d3decf9e4d8f41bd1a4d0673b, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: 94d15842a1c433548915add943089871, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+  - clip: {fileID: 8300000, guid: 8dedc5184cee35d4a8b0c93309d57a00, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+  - clip: {fileID: 8300000, guid: e01928dd0a37099498d29003c9a417c9, type: 3}
+    outputGroup: {fileID: 7038982503081710284, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}
+    volume: 1
+    playOnAwake: 0
+    loop: 1
+--- !u!114 &5930062671605320882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519273085680288422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8629acf7d4ed1941b01c29392f8999e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 9428578bb25f7f64c8f7b3d8033c8eeb, type: 2}

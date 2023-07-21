@@ -28,6 +28,7 @@ public class OpenDoor : ItemIteract
             this.transform.position = new Vector3(0, 0, 0);
             text.SetActive(false);
             GameObject.Find("ListManager").GetComponent<ListOneManager>().Finish(3);
+            AudioManger.PlayAudio("门上锁");
             StartCoroutine("NextScene");
         }
     }

@@ -8,6 +8,7 @@ public class ToDoManager : MonoBehaviour
     public GameObject TabCanvas;
     public GameObject TabPanel;
     public GameObject SavePanel;
+    public GameObject setPanel;
     public GameObject Buttons;
     public GameObject List;
 
@@ -32,7 +33,7 @@ public class ToDoManager : MonoBehaviour
         TabCanvas = GameObject.Find("TabCanvas");
         TabPanel = TabCanvas.transform.GetChild(0).gameObject;
         SavePanel = TabCanvas.transform.GetChild(1).gameObject;
-        Buttons = TabCanvas.transform.GetChild(2).gameObject;
+        Buttons = TabCanvas.transform.GetChild(3).gameObject;
         List = TabPanel.transform.GetChild(2).gameObject;
         if (!IsOpenUI && Input.GetKeyDown(KeyCode.Tab))
         {
@@ -40,6 +41,7 @@ public class ToDoManager : MonoBehaviour
             Time.timeScale = 0;
             TabPanel.SetActive(true);
             SavePanel.SetActive(false);
+            setPanel.SetActive(false);
             Buttons.SetActive(true);
             List.SetActive(true);
             TabCanvas.GetComponent<RecordPanel>().reset();
@@ -58,6 +60,7 @@ public class ToDoManager : MonoBehaviour
         TabPanel.SetActive(false);
         SavePanel.SetActive(false);
         Buttons.SetActive(false);
+        setPanel.SetActive(false);
         IsOpenUI = false;
     }
 }

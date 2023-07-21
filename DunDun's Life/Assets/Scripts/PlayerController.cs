@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float timeBeforeNextJump = 1.2f;
     private float canJump = 0f;
     private float timer = 0f;
+    public bool noOnUI = true;
 
     Animator anim;
     Rigidbody rb;
@@ -96,14 +97,14 @@ public class PlayerController : MonoBehaviour
     void DogSound()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0f && noOnUI)
         {
-            //AudioManger.PlayAudio("DogSoundOne");
+            AudioManger.PlayAudio("狗叫");
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Time.timeScale > 0f && noOnUI)
         {
             timer = 0;
-            //AudioManger.PlayAudio("DogSoundTwo");
+            AudioManger.PlayAudio("狗撒娇");
             anim.SetBool("Cute", true);
 
             Debug.Log("Cute");

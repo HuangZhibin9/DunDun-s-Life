@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class RecordPanel : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RecordPanel : MonoBehaviour
     public Transform grid;               //档位父对象
     public GameObject recordPrefab;      //档位预制体
     public GameObject recordPanel;
+    public GameObject setPanel;
     public GameObject List;      //存档面板【控制显示/隐藏】
 
     [Header("按钮")]
@@ -18,6 +20,7 @@ public class RecordPanel : MonoBehaviour
     public Button exit;
     public Button save;
     public Button load;
+    public Button setting;
     public Button _return;
 
     [ColorUsage(true)]
@@ -63,10 +66,17 @@ public class RecordPanel : MonoBehaviour
         load.onClick.AddListener(() => SaveOrLoad(false));
         _return.onClick.AddListener(() => _Return());
         exit.onClick.AddListener(QuitGame);
+        setting.onClick.AddListener(() => Setting());
         #endregion
 
         //设置时间
         TimeMgr.SetOriTime();
+    }
+
+    private void Setting()
+    {
+        setPanel.SetActive(true);
+        recordPanel.SetActive(false);
     }
 
     private void OnDestroy()
@@ -142,9 +152,10 @@ public class RecordPanel : MonoBehaviour
     }
     void _Return()
     {
-        if (recordPanel.activeSelf)
+        if (recordPanel.activeSelf || setPanel.activeSelf)
         {
             recordPanel.SetActive(false);
+            setPanel.SetActive(false);
             isSave = false;
             isLoad = false;
             save.gameObject.SetActive(!isSave);

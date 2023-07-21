@@ -69,6 +69,7 @@ public class CloseWaterState : IState
         {
             Debug.Log($"CloseWater");
             parameter.animator.SetBool("Walking", false);
+
             parameter.animator.SetBool("CloseWater", true);
             timer += Time.deltaTime;
         }
@@ -79,6 +80,8 @@ public class CloseWaterState : IState
         if (timer > 5f)
         {
             Debug.Log($"Return");
+            GameObject.Find("Stopcock").GetComponent<Stopcock>().isSpring = false;
+            AudioManger.StopAudio("喷水声");
             parameter.agent.destination = parameter.oriPosition;
             parameter.animator.SetBool("Walking", true);
             parameter.animator.SetBool("CloseWater", false);
@@ -297,6 +300,7 @@ public class WettedState : IState
         if (Vector3.Distance(manager.gameObject.transform.position, GameObject.Find("KettlePosition").transform.position) < 32f && Index == 4)
         {
             parameter.animator.SetBool("Walking", false);
+
             parameter.animator.SetBool("PutDown", true);
             timer = 0;
             Index = 5;

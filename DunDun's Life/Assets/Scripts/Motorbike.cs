@@ -19,6 +19,7 @@ public class Motorbike : MonoBehaviour
             isShowing = false;
             dog.GetComponent<PlayerController>().walkSpeed += 40;
             dog.GetComponent<PlayerController>().runSpeed += 40;
+            AudioManger.StopAudio("车警报");
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -32,6 +33,7 @@ public class Motorbike : MonoBehaviour
             can = false;
             StartCoroutine("ResetSound");
             timer = 0f;
+            AudioManger.PlayAudio("车警报");
         }
     }
 

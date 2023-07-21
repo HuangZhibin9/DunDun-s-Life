@@ -41,10 +41,10 @@ public class Tutorials : MonoBehaviour
         {
             if (FaceDilate < -0.8f && GuidenceIndex == 2)
             {
-                GetComponent<TextMeshPro>().text = "LeftShift Run";
+                GetComponent<TextMeshPro>().text = "Shift奔跑";
                 StartCoroutine("TextPresent");
             }
-            if (FaceDilate > -0.1f && GuidenceIndex == 2 && GetComponent<TextMeshPro>().text == "LeftShift Run")
+            if (FaceDilate > -0.1f && GuidenceIndex == 2 && GetComponent<TextMeshPro>().text == "Shift奔跑")
             {
                 GuidenceIndex = 3;
             }
@@ -73,7 +73,7 @@ public class Tutorials : MonoBehaviour
             if (FaceDilate < -0.9f && GuidenceIndex == 5
                 && Input.GetKeyDown(KeyCode.E))
             {
-                GetComponent<TextMeshPro>().text = "Tab to show list";
+                GetComponent<TextMeshPro>().text = "Tab打开任务栏";
                 StartCoroutine("TextPresent");
                 GuidenceIndex = 6;
             }
@@ -91,10 +91,10 @@ public class Tutorials : MonoBehaviour
         {
             if (FaceDilate < -0.9f && GuidenceIndex == 7)
             {
-                GetComponent<TextMeshPro>().text = "left/right click bar/cute";
+                GetComponent<TextMeshPro>().text = "左键叫 右键卖萌";
                 StartCoroutine("TextPresent");
             }
-            if (FaceDilate > -0.1f && GuidenceIndex == 7 && GetComponent<TextMeshPro>().text == "left/right click bar/cute")
+            if (FaceDilate > -0.1f && GuidenceIndex == 7 && GetComponent<TextMeshPro>().text == "左键叫 右键卖萌")
             {
                 GuidenceIndex = 8;
             }
@@ -122,7 +122,7 @@ public class Tutorials : MonoBehaviour
     {
         if (other.tag == "Items" && GuidenceIndex == 4 && FaceDilate < -0.9f)
         {
-            GetComponent<TextMeshPro>().text = "E to catch/throw";
+            GetComponent<TextMeshPro>().text = "E拾起/丢下物品";
             StartCoroutine("TextPresent");
         }
     }

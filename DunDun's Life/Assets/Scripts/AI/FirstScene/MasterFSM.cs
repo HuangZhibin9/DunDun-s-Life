@@ -30,7 +30,7 @@ public class MasterFSM : MonoBehaviour
     public GameObject emojiManager;
     public GameObject Kettle;
     public bool isWetted = false;
-
+    bool isSoundOn = false;
 
     void Start()
     {
@@ -49,6 +49,15 @@ public class MasterFSM : MonoBehaviour
         {
             Debug.Log("Call the master");
             isWetted = true;
+        }
+        if (this.GetComponent<Animator>().GetBool("Walking") && isSoundOn == false)
+        {
+            this.GetComponent<AudioSource>().Play();
+        }
+        if (this.GetComponent<Animator>().GetBool("Walking") == false)
+        {
+            this.GetComponent<AudioSource>().Stop();
+            isSoundOn = false;
         }
     }
     public void TransitionState(StateType type)

@@ -40,8 +40,13 @@ public class AudioManger : MonoBehaviour
     {
         if (instance == null)
         {
+            DontDestroyOnLoad(gameObject);
             instance = this;
             audiosDic = new Dictionary<string, AudioSource>();
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -98,4 +103,5 @@ public class AudioManger : MonoBehaviour
         }
         instance.audiosDic[name].Stop();
     }
+
 }
