@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 10_Purple3
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords:
+  m_Shader: {fileID: 4800000, guid: 314bdc0dcc335db4a9e78f06b9b4c37e, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _GLOSSYREFLECTIONS_OFF
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -95,10 +95,13 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.355
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SampleGI: 0
+    - _ShadowRange: 0.078
+    - _ShadowSmooth: 0.75
     - _Shininess: 0
     - _Smoothness: 0
     - _SmoothnessSource: 0
@@ -115,8 +118,11 @@ Material:
     - _Color: {r: 0.8779059, g: 0.7698469, b: 0.9433962, a: 1}
     - _EmissionColor: {r: 0.4664974, g: 0.3981771, b: 0.55, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.87843144, g: 0.7686275, b: 0.9450981, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _outlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5671827171726873102
 MonoBehaviour:
